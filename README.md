@@ -193,3 +193,7 @@ HUGO_MODULE_REPLACEMENTS="github.com/kikeelectronico/hugo-docs-theme -> ../hugo-
 ```
 
 Releases are Git tags following semantic versioning (`v0.1.0`, `v0.2.0`, ...).
+
+```sh 
+git tag v0.2.0 && git push origin v0.2.0
+```
