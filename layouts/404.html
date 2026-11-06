@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{- $docsSection := site.Params.docsSection | default "docs" -}}
+<main class="page container not-found">
+  <p class="not-found-code" aria-hidden="true">404</p>
+  <h1>{{ i18n "not_found_title" }}</h1>
+  <p>{{ i18n "not_found_text" }}</p>
+  <p class="not-found-actions">
+    <a class="button button-primary" href="{{ site.Home.RelPermalink }}">{{ i18n "not_found_home" }}</a>
+    {{- with site.GetPage (printf "/%s" $docsSection) }}
+    <a class="button" href="{{ .RelPermalink }}">{{ i18n "not_found_docs" }}</a>
+    {{- end }}
+  </p>
+</main>
+{{ end }}

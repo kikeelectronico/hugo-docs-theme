@@ -1,0 +1,47 @@
+{{- $docsSection := site.Params.docsSection | default "docs" -}}
+{{- $logo := site.Params.logo | default "hugo-docs-theme/logo.svg" -}}
+<header class="navbar">
+  <div class="navbar-inner">
+    <button class="sidebar-toggle" type="button" aria-label="{{ i18n "menu_open" }}" data-label-open="{{ i18n "menu_open" }}" data-label-close="{{ i18n "menu_close" }}" aria-controls="mobile-menu" aria-expanded="false">☰</button>
+    <a class="brand" href="{{ site.Home.RelPermalink }}">
+      <img src="{{ $logo | relURL }}" alt="{{ site.Params.logoAlt | default (i18n "logo_alt" site.Title) }}" width="32" height="32">
+      <strong>{{ site.Title }}</strong>
+    </a>
+    <nav class="nav-links" aria-label="{{ i18n "nav_main" }}">
+      {{- range site.Menus.main }}
+      {{- $active := partial "menu-is-active.html" (dict "entry" . "page" $) }}
+      <a href="{{ .URL }}"{{ if $active }} class="active"{{ end }}{{ if (urls.Parse .URL).Scheme }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    </nav>
+    <div class="nav-right">
+      {{- with site.Params.github }}
+      <a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_github" }}</a>
+      {{- end }}
+      {{- range site.Menus.actions }}
+      <a href="{{ .URL }}"{{ if (urls.Parse .URL).Scheme }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+      <button class="theme-toggle" type="button" aria-label="{{ i18n "theme_toggle" }}"></button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="{{ i18n "nav_mobile" }}">
+    <ul>
+      {{- range site.Menus.main }}
+      {{- $active := partial "menu-is-active.html" (dict "entry" . "page" $) }}
+      <li>
+        <a class="mm-parent{{ if $active }} active{{ end }}" href="{{ .URL }}"{{ if (urls.Parse .URL).Scheme }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+        {{- with .Page }}{{ if and .Section (eq .Section $docsSection) }}
+        <ul class="mm-sub">
+          {{ partial "docs-items.html" $ }}
+        </ul>
+        {{- end }}{{ end }}
+      </li>
+      {{- end }}
+      {{- with site.Params.github }}
+      <li><a class="mm-parent" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_github" }}</a></li>
+      {{- end }}
+      {{- range site.Menus.actions }}
+      <li><a class="mm-parent" href="{{ .URL }}"{{ if (urls.Parse .URL).Scheme }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a></li>
+      {{- end }}
+    </ul>
+  </nav>
+</header>

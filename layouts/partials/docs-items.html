@@ -1,0 +1,8 @@
+{{- /* Input: current page. Renders the <li> items of the docs section. */ -}}
+{{- $current := .RelPermalink -}}
+{{- $docsSection := site.Params.docsSection | default "docs" -}}
+{{- with site.GetPage (printf "/%s" $docsSection) -}}
+  {{- range .Pages.ByWeight }}
+<li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $current }} class="active" aria-current="page"{{ end }}>{{ .Title }}</a></li>
+  {{- end }}
+{{- end -}}

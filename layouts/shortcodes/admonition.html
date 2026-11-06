@@ -1,0 +1,11 @@
+{{- $type := .Get "type" | default "note" -}}
+{{- $known := slice "note" "tip" "info" "caution" "warning" "danger" -}}
+{{- $fallback := $type -}}
+{{- if in $known $type -}}
+  {{- $fallback = i18n (printf "admonition_%s" $type) -}}
+{{- end -}}
+{{- $title := .Get "title" | default $fallback -}}
+<div class="admonition admonition-{{ $type }}" role="note">
+  <div class="admonition-heading">{{ $title }}</div>
+  <div class="admonition-content">{{ .Inner | .Page.RenderString (dict "display" "block") }}</div>
+</div>

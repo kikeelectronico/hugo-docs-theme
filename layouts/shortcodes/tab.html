@@ -1,0 +1,5 @@
+{{- $label := .Get "label" -}}
+<section class="tab-panel" data-label="{{ $label }}"{{ if .Get "default" }} data-default{{ end }}>
+  <h4 class="tab-fallback">{{ $label }}</h4>
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</section>

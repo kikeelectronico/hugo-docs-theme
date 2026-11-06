@@ -1,0 +1,14 @@
+{{- /*
+  Input: dict with "entry" (menu entry) and "page" (current page).
+  Returns true when the entry points to the current page, or to a page that
+  lives in the same top-level section as the current page.
+*/ -}}
+{{- $entry := .entry -}}
+{{- $page := .page -}}
+{{- $active := eq $entry.URL $page.RelPermalink -}}
+{{- with $entry.Page -}}
+  {{- if and .Section (eq .Section $page.Section) -}}
+    {{- $active = true -}}
+  {{- end -}}
+{{- end -}}
+{{- return $active -}}

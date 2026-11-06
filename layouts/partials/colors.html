@@ -1,0 +1,32 @@
+{{- /*
+  Emits CSS custom properties for the colors the site sets in
+  [params.colors.light] / [params.colors.dark]. Only the keys that are set are
+  emitted; everything else keeps the theme default defined in main.css.
+  The light block always goes before the dark one so the dark one wins.
+*/ -}}
+{{- $vars := dict
+  "primary" "--primary"
+  "link" "--link"
+  "background" "--bg"
+  "surface" "--surface"
+  "text" "--text"
+  "muted" "--muted"
+  "border" "--border"
+-}}
+{{- $colors := site.Params.colors | default dict -}}
+{{- $css := "" -}}
+{{- range slice (dict "mode" "light" "selector" ":root") (dict "mode" "dark" "selector" "[data-theme=\"dark\"]") -}}
+  {{- $values := index $colors .mode | default dict -}}
+  {{- $decls := "" -}}
+  {{- range $key, $var := $vars -}}
+    {{- with index $values $key -}}
+      {{- $decls = printf "%s%s:%s;" $decls $var . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $decls -}}
+    {{- $css = printf "%s%s{%s}" $css .selector $decls -}}
+  {{- end -}}
+{{- end -}}
+{{- if $css }}
+  <style>{{ $css | safeCSS }}</style>
+{{- end -}}

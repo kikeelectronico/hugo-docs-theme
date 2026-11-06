@@ -1,0 +1,92 @@
+# Navigation and accessibility labels
+[menu_open]
+other = "Abrir menú"
+
+[menu_close]
+other = "Cerrar menú"
+
+[nav_main]
+other = "Principal"
+
+[nav_mobile]
+other = "Menú móvil"
+
+[nav_docs]
+other = "Documentación"
+
+[nav_footer]
+other = "Enlaces del pie"
+
+[link_github]
+other = "GitHub"
+
+[link_author]
+other = "Sobre mí"
+
+[theme_toggle]
+other = "Cambiar entre modo claro y oscuro"
+
+# {{ . }} is the site title
+[logo_alt]
+other = "Logo de {{ . }}"
+
+[toc_title]
+other = "En esta página"
+
+# 404 page
+[not_found_title]
+other = "Página no encontrada"
+
+[not_found_text]
+other = "Puede que el enlace esté mal escrito o que la página ya no exista."
+
+[not_found_home]
+other = "Volver al inicio"
+
+[not_found_docs]
+other = "Ir a la documentación"
+
+# Image lightbox
+[lightbox_label]
+other = "Imagen ampliada"
+
+[lightbox_close]
+other = "Cerrar imagen"
+
+# Admonition default titles
+[admonition_note]
+other = "Nota"
+
+[admonition_tip]
+other = "Consejo"
+
+[admonition_info]
+other = "Información"
+
+[admonition_caution]
+other = "Atención"
+
+[admonition_warning]
+other = "Atención"
+
+[admonition_danger]
+other = "Peligro"
+
+# YouTube shortcode and consent
+[yt_default_title]
+other = "Vídeo de YouTube"
+
+[yt_consent_message]
+other = "Este vídeo está alojado en YouTube. Al cargarlo, tu navegador se conectará a los servidores de Google y YouTube creará cookies propias, conforme a sus políticas de privacidad y cookies."
+
+[yt_consent_privacy]
+other = "Tu elección se recordará en este navegador. Puedes revocarla en cualquier momento desde el pie de página."
+
+[yt_consent_button]
+other = "Cargar vídeo"
+
+[yt_revoke_button]
+other = "Retirar el consentimiento de YouTube"
+
+[yt_invalid_id]
+other = "El identificador del vídeo de YouTube no es válido. Debe tener 11 caracteres."

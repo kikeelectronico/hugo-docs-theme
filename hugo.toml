@@ -1,0 +1,5 @@
+# Theme configuration. Hugo reads this file when the theme is imported as a module.
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.146.0"

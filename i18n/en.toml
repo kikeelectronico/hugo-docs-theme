@@ -1,0 +1,92 @@
+# Navigation and accessibility labels
+[menu_open]
+other = "Open menu"
+
+[menu_close]
+other = "Close menu"
+
+[nav_main]
+other = "Main"
+
+[nav_mobile]
+other = "Mobile menu"
+
+[nav_docs]
+other = "Documentation"
+
+[nav_footer]
+other = "Footer links"
+
+[link_github]
+other = "GitHub"
+
+[link_author]
+other = "About me"
+
+[theme_toggle]
+other = "Switch between light and dark mode"
+
+# {{ . }} is the site title
+[logo_alt]
+other = "{{ . }} logo"
+
+[toc_title]
+other = "On this page"
+
+# 404 page
+[not_found_title]
+other = "Page not found"
+
+[not_found_text]
+other = "The link may be mistyped or the page may no longer exist."
+
+[not_found_home]
+other = "Back to home"
+
+[not_found_docs]
+other = "Go to the documentation"
+
+# Image lightbox
+[lightbox_label]
+other = "Enlarged image"
+
+[lightbox_close]
+other = "Close image"
+
+# Admonition default titles
+[admonition_note]
+other = "Note"
+
+[admonition_tip]
+other = "Tip"
+
+[admonition_info]
+other = "Info"
+
+[admonition_caution]
+other = "Caution"
+
+[admonition_warning]
+other = "Warning"
+
+[admonition_danger]
+other = "Danger"
+
+# YouTube shortcode and consent
+[yt_default_title]
+other = "YouTube video"
+
+[yt_consent_message]
+other = "This video is hosted on YouTube. When it loads, your browser will connect to Google and YouTube servers and YouTube will set its own cookies, in accordance with their privacy and cookie policies."
+
+[yt_consent_privacy]
+other = "Your choice will be remembered in this browser. You can revoke it at any time from the footer."
+
+[yt_consent_button]
+other = "Load video"
+
+[yt_revoke_button]
+other = "Withdraw YouTube consent"
+
+[yt_invalid_id]
+other = "The YouTube video ID is not valid. It must be 11 characters long."

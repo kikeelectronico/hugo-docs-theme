@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{- $docsSection := site.Params.docsSection | default "docs" -}}
+{{- $isDocs := and .Section (eq .Section $docsSection) -}}
+<div class="content-layout {{ if $isDocs }}docs-layout{{ else }}page-layout{{ end }}">
+  {{- if $isDocs }}
+  <aside class="docs-sidebar">{{ partial "sidebar.html" . }}</aside>
+  {{- else }}
+  <div class="page-sidebar-space" aria-hidden="true"></div>
+  {{- end }}
+
+  <main class="content-main">
+    <article class="markdown">
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+      {{- if $isDocs }}
+      <ul class="docs-cards">
+        {{ range .Pages.ByWeight }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      </ul>
+      {{- end }}
+    </article>
+  </main>
+
+  <aside class="content-toc" aria-hidden="true"></aside>
+</div>
+{{ end }}

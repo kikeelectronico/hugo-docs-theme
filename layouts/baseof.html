@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- $title := printf "%s · %s" .Title site.Title }}
+  {{- if .IsHome }}
+    {{- $title = site.Title }}
+    {{- with site.Params.tagline }}{{ $title = printf "%s · %s" site.Title . }}{{ end }}
+  {{- end }}
+  {{- if eq .Kind "404" }}{{ $title = printf "%s · %s" (i18n "not_found_title") site.Title }}{{ end }}
+  {{- $desc := .Description | default site.Params.description }}
+  <title>{{ $title }}</title>
+  {{- with $desc }}
+  <meta name="description" content="{{ . }}">
+  {{- end }}
+  {{- if eq .Kind "404" }}<meta name="robots" content="noindex">{{ end }}
+  <meta property="og:title" content="{{ $title }}">
+  {{- with $desc }}
+  <meta property="og:description" content="{{ . }}">
+  {{- end }}
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{- $img := .Params.image | default site.Params.socialImage }}
+  {{- with $img }}
+  <meta property="og:image" content="{{ . | absURL }}">
+  <meta property="og:image:width" content="{{ site.Params.socialImageWidth | default 1200 }}">
+  <meta property="og:image:height" content="{{ site.Params.socialImageHeight | default 630 }}">
+  <meta property="og:image:alt" content="{{ $.Params.imageAlt | default site.Params.socialImageAlt | default site.Title }}">
+  {{- end }}
+  <meta property="og:site_name" content="{{ site.Title }}">
+  {{- with site.Params.ogLocale }}
+  <meta property="og:locale" content="{{ . }}">
+  {{- end }}
+  <meta name="twitter:card" content="{{ if $img }}summary_large_image{{ else }}summary{{ end }}">
+  <meta name="twitter:title" content="{{ $title }}">
+  {{- with $desc }}
+  <meta name="twitter:description" content="{{ . }}">
+  {{- end }}
+  {{- with $img }}
+  <meta name="twitter:image" content="{{ . | absURL }}">
+  {{- end }}
+  {{- $favicon := site.Params.favicon | default "hugo-docs-theme/favicon.svg" }}
+  <link rel="icon" href="{{ $favicon | relURL }}"{{ if strings.HasSuffix $favicon ".svg" }} type="image/svg+xml"{{ end }}>
+  <link rel="canonical" href="{{ .Permalink }}">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')})()</script>
+  {{- $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- partial "colors.html" . }}
+</head>
+<body data-lightbox-label="{{ i18n "lightbox_label" }}" data-lightbox-close="{{ i18n "lightbox_close" }}">
+  {{ partial "header.html" . }}
+  {{ block "main" . }}{{ end }}
+  {{ partial "footer.html" . }}
+  {{- $js := resources.Get "js/main.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<footer class="footer">
+  <div class="footer-inner">
+    {{- if or site.Params.github site.Params.author_url site.Menus.footer }}
+    <nav class="footer-links" aria-label="{{ i18n "nav_footer" }}">
+      {{- with site.Params.github }}
+      <a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_github" }}</a>
+      {{- end }}
+      {{- with site.Params.author_url }}
+      <a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_author" }}</a>
+      {{- end }}
+      {{- range site.Menus.footer }}
+      <a href="{{ .URL }}"{{ if (urls.Parse .URL).Scheme }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    </nav>
+    {{- end }}
+    <div class="youtube-consent-controls">
+      <button
+        class="youtube-consent-revoke"
+        type="button"
+        hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 3 4.5 6v5.2c0 4.7 3.2 8.1 7.5 9.8 4.3-1.7 7.5-5.1 7.5-9.8V6L12 3Zm0 2.1 5.5 2.2v3.9c0 3.6-2.3 6.4-5.5 7.9-3.2-1.5-5.5-4.3-5.5-7.9V7.3L12 5.1Zm-1 3.4v5h2v-5h-2Zm0 6.2v2h2v-2h-2Z"/>
+        </svg>
+        <span>{{ i18n "yt_revoke_button" }}</span>
+      </button>
+    </div>
+    {{- with site.Params.copyright }}
+    <div class="footer-copy">{{ . | safeHTML }}</div>
+    {{- end }}
+  </div>
+</footer>
