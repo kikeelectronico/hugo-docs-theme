@@ -5,11 +5,36 @@
     {{- with site.Params.tagline }}
     <p class="hero-subtitle">{{ . }}</p>
     {{- end }}
+    {{- /* Top-level front matter keys are lowercased by Hugo, hence "herobuttons". */ -}}
+    {{- with .Params.herobuttons }}
+    <div class="hero-actions">
+      {{- range . }}
+      {{- /* Keys inside list items may keep their original case: normalize them. */ -}}
+      {{- $b := dict }}
+      {{- range $k, $v := . }}{{ $b = merge $b (dict (lower $k) $v) }}{{ end }}
+      {{- $url := $b.url }}
+      {{- with $b.pageref }}
+        {{- with site.GetPage . }}{{ $url = .RelPermalink }}{{ else }}{{ errorf "heroButtons: page %q not found" . }}{{ end }}
+      {{- end }}
+      {{- if not $url }}{{ errorf "heroButtons: each button needs `url` or `pageRef`, got %v" . }}{{ end }}
+      {{- $style := $b.style | default "primary" }}
+      <a class="hero-button hero-button-{{ $style }}" href="{{ $url }}"{{ if strings.HasPrefix $url "http" }} target="_blank" rel="noopener"{{ end }}>{{ $b.label }}</a>
+      {{- end }}
+    </div>
+    {{- end }}
   </div>
 </header>
+{{- if eq (.Params.homestyle | default "banner") "content" }}
+<main class="home-main">
+  <div class="container markdown">
+    {{ .Content }}
+  </div>
+</main>
+{{- else }}
 {{- with site.Params.homeBanner }}
 <main class="home-banner" style="background-image:url('{{ . | relURL }}')"></main>
 {{- else }}
 <main class="home-banner"></main>
+{{- end }}
 {{- end }}
 {{ end }}

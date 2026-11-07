@@ -147,6 +147,27 @@ All UI strings live in `i18n/<lang>.toml` (`es` and `en` included) and the langu
 | `yt_revoke_button` | Footer button that withdraws the consent. |
 | `yt_invalid_id` | Message when the video ID is not valid. |
 
+### Home page
+
+By default the home page is the hero (site title and `tagline`) followed by the `homeBanner` image. For projects without an image, set these keys in the front matter of `content/_index.md` (they can differ per language):
+
+| Key | Description |
+|---|---|
+| `homeStyle` | `banner` (default) keeps the image area. `content` replaces it with the body of `_index.md`, which can use any shortcode, such as `cards`. |
+| `heroButtons` | Optional list of buttons shown in the hero, with or without `homeStyle`. Each one needs `label` and either `url` or `pageRef` (a content path, e.g. `/docs/install`), and accepts `style`: `primary` (default, filled) or `secondary` (outline). External `url`s open in a new tab. |
+
+```yaml
+---
+homeStyle: content
+heroButtons:
+  - label: Get started
+    pageRef: /docs/install
+    style: secondary
+---
+```
+
+Nothing changes for sites that do not set these keys.
+
 ## Shortcodes
 
 ### Admonition
@@ -179,6 +200,20 @@ Videos are loaded from `youtube-nocookie.com` only after the visitor accepts. Th
 ```
 {{< yt "VIDEO_ID" "Accessible title" >}}
 ```
+
+### Cards
+
+A responsive grid of cards. `title`, `icon` (an emoji or short text), `image` (path relative to `static/`), `alt` (defaults to the title) and `link` are optional. `link` wraps the image/icon and the title; external links open in a new tab. The body is markdown.
+
+{{< cards >}}
+{{< card title="Easy to run" image="img/server.png" >}}
+Runs on a Raspberry Pi or an Ubuntu Server.
+{{< /card >}}
+{{< card title="Open source" icon="🔓" link="https://opensource.org/" >}}
+Licensed under an OSI approved license.
+{{< /card >}}
+{{< /cards >}}
+
 
 ## Images in content
 

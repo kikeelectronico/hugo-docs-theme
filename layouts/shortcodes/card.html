@@ -1,0 +1,13 @@
+{{- $title := .Get "title" -}}
+{{- $link := .Get "link" -}}
+<div class="card">
+  {{- if $link }}<a class="card-link" href="{{ $link }}"{{ if strings.HasPrefix $link "http" }} target="_blank" rel="noopener"{{ end }}>{{ end }}
+  {{- with .Get "image" }}
+  <img class="card-image no-zoom" src="{{ . | relURL }}" alt="{{ $.Get "alt" | default $title }}" loading="lazy">
+  {{- else }}
+  {{- with $.Get "icon" }}<span class="card-icon" aria-hidden="true">{{ . }}</span>{{ end }}
+  {{- end }}
+  {{- with $title }}<h3 class="card-title">{{ . }}</h3>{{ end }}
+  {{- if $link }}</a>{{ end }}
+  <div class="card-body">{{ .Inner | .Page.RenderString (dict "display" "block") }}</div>
+</div>

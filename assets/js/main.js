@@ -166,7 +166,7 @@
   });
 
   imgs.forEach(function (img) {
-    if (img.closest('a')) return; // leave images that are already links alone
+    if (img.closest('a') || img.classList.contains('no-zoom')) return; // leave links and .no-zoom images alone
     img.classList.add('zoomable');
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
