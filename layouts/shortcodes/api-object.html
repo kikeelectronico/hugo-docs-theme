@@ -1,0 +1,5 @@
+<details class="api-field api-object"{{ if ne (.Get "open" | default "true") "false" }} open{{ end }}>
+  <summary>{{ partial "api-field-head.html" . }}</summary>
+  {{- partial "api-field-meta.html" . }}
+  <div class="api-children">{{ .Inner }}</div>
+</details>

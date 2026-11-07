@@ -1,0 +1,11 @@
+{{- $method := lower (.Get "method" | default "get") -}}
+<div class="api-op">
+  <div class="api-op-head">
+    <span class="api-method api-method-{{ $method }}">{{ upper $method }}</span>
+    <code class="api-path">{{ .Get "path" | htmlEscape | replaceRE "\\{([^}]+)\\}" "<span class=\"api-path-param\">{$1}</span>" | safeHTML }}</code>
+    {{- if .Get "deprecated" }}
+    <span class="api-badge api-deprecated">{{ i18n "api_deprecated" }}</span>
+    {{- end }}
+  </div>
+  <div class="api-op-body">{{ .Inner }}</div>
+</div>

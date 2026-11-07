@@ -1,0 +1,12 @@
+<div class="api-body">
+  <div class="api-body-head">
+    <code class="api-content-type">{{ .Get "type" }}</code>
+    <span class="api-field-type">{{ .Get "schema" }}</span>
+    {{- with .Get "enum" }}
+    <span class="api-field-meta">{{ i18n "api_one_of" }}{{ range split . ", " }} <code class="api-enum">{{ . }}</code>{{ end }}</span>
+    {{- end }}
+  </div>
+  {{- if strings.Trim .Inner "\n\r\t " }}
+  <div class="api-fields">{{ .Inner }}</div>
+  {{- end }}
+</div>

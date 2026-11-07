@@ -1,0 +1,9 @@
+{{- $kind := .Get "kind" | default "parameters" -}}
+{{- $titles := dict "parameters" "api_parameters" "request" "api_request_body" "responses" "api_responses" -}}
+<section class="api-section api-section-{{ $kind }}">
+  <h4 class="api-section-title">
+    {{- with index $titles $kind }}{{ i18n . }}{{ end }}
+    {{- if .Get "required" }} <span class="api-badge api-required">{{ i18n "api_required" }}</span>{{ end -}}
+  </h4>
+  {{ .Inner }}
+</section>

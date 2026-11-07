@@ -1,0 +1,7 @@
+{{- /* Input: shortcode context (api-field / api-object). Name, type and badges. */ -}}
+<span class="api-field-head">
+  {{- with .Get "name" }}<code class="api-field-name">{{ . }}</code>{{ end }}
+  <span class="api-field-type">{{ .Get "type" }}</span>
+  {{- with .Get "location" }}<span class="api-badge">{{ . }}</span>{{ end }}
+  {{- if .Get "required" }}<span class="api-badge api-required">{{ i18n "api_required" }}</span>{{ end }}
+</span>

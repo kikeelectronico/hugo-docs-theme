@@ -90,3 +90,28 @@ other = "Withdraw YouTube consent"
 
 [yt_invalid_id]
 other = "The YouTube video ID is not valid. It must be 11 characters long."
+
+# API reference
+[api_parameters]
+other = "Parameters"
+
+[api_request_body]
+other = "Request body"
+
+[api_responses]
+other = "Responses"
+
+[api_required]
+other = "required"
+
+[api_default]
+other = "Default"
+
+[api_one_of]
+other = "One of"
+
+[api_deprecated]
+other = "Deprecated"
+
+[api_recursive]
+other = "Recursive reference, not expanded here"

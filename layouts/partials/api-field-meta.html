@@ -1,0 +1,13 @@
+{{- /* Input: shortcode context (api-field / api-object). Enum, default and description. */ -}}
+{{- with .Get "enum" }}
+<div class="api-field-meta">{{ i18n "api_one_of" }}{{ range split . ", " }} <code class="api-enum">{{ . }}</code>{{ end }}</div>
+{{- end }}
+{{- with .Get "default" }}
+<div class="api-field-meta">{{ i18n "api_default" }} <code>{{ . }}</code></div>
+{{- end }}
+{{- if .Get "recursive" }}
+<div class="api-field-meta">{{ i18n "api_recursive" }}</div>
+{{- end }}
+{{- with .Get "desc" }}
+<div class="api-field-desc">{{ $.Page.RenderString . }}</div>
+{{- end }}

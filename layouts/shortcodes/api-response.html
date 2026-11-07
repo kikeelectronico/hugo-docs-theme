@@ -1,0 +1,12 @@
+{{- $status := .Get "status" -}}
+{{- $class := printf "api-status-%s" (substr $status 0 1) -}}
+{{- if strings.Trim .Inner "\n\r\t " }}
+<details class="api-response {{ $class }}"{{ if ne (.Get "open" | default "true") "false" }} open{{ end }}>
+  <summary class="api-response-summary"><span class="api-response-head"><span class="api-status {{ $class }}">{{ $status }}</span><span class="api-response-desc">{{ .Get "description" }}</span></span></summary>
+  <div class="api-response-body">{{ .Inner }}</div>
+</details>
+{{- else }}
+<div class="api-response {{ $class }}">
+  <div class="api-response-summary"><span class="api-response-head"><span class="api-status {{ $class }}">{{ $status }}</span><span class="api-response-desc">{{ .Get "description" }}</span></span></div>
+</div>
+{{- end }}

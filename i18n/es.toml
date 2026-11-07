@@ -90,3 +90,28 @@ other = "Retirar el consentimiento de YouTube"
 
 [yt_invalid_id]
 other = "El identificador del vídeo de YouTube no es válido. Debe tener 11 caracteres."
+
+# API reference
+[api_parameters]
+other = "Parámetros"
+
+[api_request_body]
+other = "Cuerpo de la petición"
+
+[api_responses]
+other = "Respuestas"
+
+[api_required]
+other = "obligatorio"
+
+[api_default]
+other = "Por defecto"
+
+[api_one_of]
+other = "Uno de"
+
+[api_deprecated]
+other = "Obsoleto"
+
+[api_recursive]
+other = "Referencia recursiva, no se expande aquí"

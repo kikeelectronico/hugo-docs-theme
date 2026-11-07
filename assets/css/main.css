@@ -813,3 +813,189 @@ html.lightbox-open {
     padding: .6rem .75rem;
   }
 }
+
+/* API reference (api-* shortcodes) */
+:root {
+  --api-get: #2563eb;
+  --api-post: #15803d;
+  --api-put: #b45309;
+  --api-patch: #7c3aed;
+  --api-delete: #dc2626;
+  --api-ok: #15803d;
+  --api-info: #2563eb;
+  --api-warn: #b45309;
+  --api-err: #dc2626;
+}
+[data-theme="dark"] {
+  --api-get: #60a5fa;
+  --api-post: #4ade80;
+  --api-put: #fbbf24;
+  --api-patch: #a78bfa;
+  --api-delete: #f87171;
+  --api-ok: #4ade80;
+  --api-info: #60a5fa;
+  --api-warn: #fbbf24;
+  --api-err: #f87171;
+}
+
+.api-op {
+  margin: 1rem 0 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.api-op-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .75rem;
+  padding: .7rem 1rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.api-op-body {
+  padding: 0 1rem 1rem;
+}
+.markdown .api-path {
+  padding: 0;
+  background: none;
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+.api-path-param {
+  color: var(--link);
+}
+
+.api-method,
+.api-status {
+  --c: var(--muted);
+  display: inline-block;
+  min-width: 4.2rem;
+  padding: .15rem .55rem;
+  border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+  color: var(--c);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-align: center;
+}
+.api-status { min-width: 3rem; }
+.api-method-get { --c: var(--api-get); }
+.api-method-post { --c: var(--api-post); }
+.api-method-put { --c: var(--api-put); }
+.api-method-patch { --c: var(--api-patch); }
+.api-method-delete { --c: var(--api-delete); }
+.api-status-2 { --c: var(--api-ok); }
+.api-status-3 { --c: var(--api-info); }
+.api-status-4 { --c: var(--api-warn); }
+.api-status-5 { --c: var(--api-err); }
+
+.markdown .api-section-title {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 1.4rem 0 .5rem;
+  color: var(--muted);
+  font-size: .75rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.api-desc {
+  margin-top: .9rem;
+}
+.api-desc > :first-child { margin-top: 0; }
+.api-desc > :last-child { margin-bottom: 0; }
+
+.api-field {
+  padding: .6rem 0;
+  border-top: 1px solid var(--border);
+}
+.api-field-head {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25rem .6rem;
+}
+.markdown .api-field-name {
+  padding: 0;
+  background: none;
+  font-weight: 600;
+}
+.api-field-type {
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .85rem;
+}
+.api-badge {
+  padding: 0 .45rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: .7rem;
+  line-height: 1.6;
+}
+.api-required {
+  border-color: color-mix(in srgb, var(--api-err) 40%, transparent);
+  color: var(--api-err);
+}
+.api-deprecated {
+  border-color: color-mix(in srgb, var(--api-warn) 40%, transparent);
+  color: var(--api-warn);
+}
+.api-field-meta {
+  margin-top: .25rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+.api-field-desc {
+  margin-top: .25rem;
+}
+details.api-object > summary,
+details.api-response > summary {
+  cursor: pointer;
+}
+.api-children {
+  margin: .5rem 0 0 .35rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+}
+.api-children > .api-field:first-child {
+  border-top: none;
+}
+
+.api-body + .api-body {
+  margin-top: .75rem;
+}
+.api-body-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25rem .75rem;
+  margin: .25rem 0;
+}
+.markdown .api-content-type {
+  padding: 0;
+  background: none;
+  font-size: .8rem;
+}
+.api-response {
+  margin: .5rem 0;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--c, var(--border));
+  border-radius: 8px;
+}
+.api-response-summary {
+  padding: .55rem .8rem;
+}
+.api-response-head {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem .6rem;
+}
+.api-response-body {
+  padding: 0 .8rem .6rem;
+}
