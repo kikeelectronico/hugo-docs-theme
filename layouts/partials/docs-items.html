@@ -1,8 +1,5 @@
-{{- /* Input: current page. Renders the <li> items of the docs section. */ -}}
-{{- $current := .RelPermalink -}}
+{{- /* Input: current page. Renders the <li> items of the docs section (nested). */ -}}
 {{- $docsSection := site.Params.docsSection | default "docs" -}}
 {{- with site.GetPage (printf "/%s" $docsSection) -}}
-  {{- range .Pages.ByWeight }}
-<li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $current }} class="active" aria-current="page"{{ end }}>{{ .Title }}</a></li>
-  {{- end }}
+  {{- partial "docs-tree.html" (dict "section" . "current" $) -}}
 {{- end -}}

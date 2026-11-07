@@ -796,3 +796,23 @@ html.lightbox-open {
 .youtube-consent-revoke[hidden] {
   display: none !important;
 }
+/* Nested docs: collapsible categories */
+.docs-category summary {
+  cursor: pointer;
+  padding: .45rem .75rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.docs-category summary:hover {
+  background: var(--surface);
+}
+.docs-category > details > ul {
+  margin-left: .75rem;
+  padding-left: .5rem;
+  border-left: 2px solid var(--border);
+}
+@media (max-width: 996px) {
+  .mobile-menu .docs-category summary {
+    padding: .6rem .75rem;
+  }
+}
