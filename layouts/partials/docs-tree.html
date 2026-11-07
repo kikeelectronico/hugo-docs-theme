@@ -1,19 +1,17 @@
 {{- /*
   Input: dict with "section" (a section page) and "current" (the page being rendered).
-  Renders the children of "section": pages as links and sub-sections as
-  collapsible groups. Calls itself for each sub-section.
+  Renders the children of "section": pages as links and sub-sections as a
+  label followed by their own (always visible) nested list. Calls itself for
+  each sub-section.
 */ -}}
 {{- $current := .current -}}
 {{- range .section.Pages.ByWeight }}
   {{- if .IsSection }}
-  {{- $open := or (.Eq $current) (.IsAncestor $current) }}
 <li class="docs-category">
-  <details{{ if $open }} open{{ end }}>
-    <summary>{{ .Title }}</summary>
-    <ul>
-      {{- partial "docs-tree.html" (dict "section" . "current" $current) }}
-    </ul>
-  </details>
+  <span class="docs-category-title">{{ .Title }}</span>
+  <ul>
+    {{- partial "docs-tree.html" (dict "section" . "current" $current) }}
+  </ul>
 </li>
   {{- else }}
 <li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $current.RelPermalink }} class="active" aria-current="page"{{ end }}>{{ .Title }}</a></li>
